@@ -1,12 +1,20 @@
 package com.foxconn.alan.my_tvapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v17.leanback.widget.ImageCardView;
 import android.support.v17.leanback.widget.Presenter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.net.URI;
 
 /**
  * Created by alan on 08/02/2018.
@@ -23,10 +31,12 @@ public class CardPresenter extends Presenter{
         private Movie mMovie;
         private ImageCardView mCardView;
         private Drawable mDefaultCardImage;
+        private PicassoImageCardViewTarget mImageCardViewTarget;
 
         public ViewHolder(View view) {
             super(view);
             mCardView = (ImageCardView) view;
+            mImageCardViewTarget = new PicassoImageCardViewTarget(mCardView);
             mDefaultCardImage = mContext.getResources().getDrawable(R.drawable.movie_img);
         }
 
@@ -44,6 +54,15 @@ public class CardPresenter extends Presenter{
 
         public Drawable getDefaultCardImage() {
             return mDefaultCardImage;
+        }
+
+        protected void updateCardViewImage(URI uri) {
+            Picasso.with(mContext)
+                    .load(uri.toString())
+                    .resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
+                            Utils.convertDpToPixel(mContext, CARD_HEIGHT))
+                    .error(mDefaultCardImage)
+                    .into(mImageCardViewTarget);
         }
     }
 
@@ -68,12 +87,37 @@ public class CardPresenter extends Presenter{
         ((ViewHolder) viewHolder).mCardView.setTitleText(movie.getTitle());
         ((ViewHolder) viewHolder).mCardView.setContentText(movie.getStudio());
         ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
-        ((ViewHolder) viewHolder).mCardView.setMainImage(((ViewHolder) viewHolder).getDefaultCardImage());
+        ((ViewHolder) viewHolder).updateCardViewImage(movie.getCardImageURI());
+        //((ViewHolder) viewHolder).mCardView.setMainImage(((ViewHolder) viewHolder).getDefaultCardImage());
     }
 
     @Override
     public void onUnbindViewHolder(Presenter.ViewHolder viewHolder) {
         Log.d(TAG, "onUnbindViewHolder");
+    }
+
+    public static class PicassoImageCardViewTarget implements Target {
+        private ImageCardView mImageCardView;
+
+        public PicassoImageCardViewTarget(ImageCardView imageCardView) {
+            mImageCardView = imageCardView;
+        }
+
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom loadedFrom) {
+            Drawable bitmapDrawable = new BitmapDrawable(mContext.getResources(), bitmap);
+            mImageCardView.setMainImage(bitmapDrawable);
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable drawable) {
+            mImageCardView.setMainImage(drawable);
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable drawable) {
+            // Do nothing, default_background manager has its own transitions
+        }
     }
 
 }

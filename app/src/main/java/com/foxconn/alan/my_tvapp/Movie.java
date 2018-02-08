@@ -1,5 +1,8 @@
 package com.foxconn.alan.my_tvapp;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * Created by alan on 08/02/2018.
  * Movie class represents video entity with title, description, image thumbs and video url.
@@ -12,6 +15,7 @@ public class Movie {
     private long id;
     private String title;
     private String studio;
+    private String cardImageUrl;
 
     public Movie(){
     }
@@ -38,6 +42,22 @@ public class Movie {
 
     public void setStudio(String studio) {
         this.studio = studio;
+    }
+
+    public String getCardImageUrl() {
+        return cardImageUrl;
+    }
+
+    public void setCardImageUrl(String cardImageUrl) {
+        this.cardImageUrl = cardImageUrl;
+    }
+
+    public URI getCardImageURI() {
+        try {
+            return new URI(getCardImageUrl());
+        } catch (URISyntaxException e) {
+            return null;
+        }
     }
 
     @Override

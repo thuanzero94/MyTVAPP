@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.foxconn.alan.my_tvapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- TV app need to declare touchscreen not required -->
     <uses-feature
         android:name="android.hardware.touchscreen"
