@@ -71,13 +71,28 @@ public class MainFragment extends BrowseFragment {
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
 
         HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
 
         GridItemPresenter mGridPresenter = new GridItemPresenter();
+        CardPresenter cardPresenter = new CardPresenter();
+
+        /*GridPresenter*/
         ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
         gridRowAdapter.add("ITEM 1");
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
+        /*CardPresenter*/
+        ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
+        for(int i=0; i<10; i++) {
+            Movie movie = new Movie();
+            movie.setTitle("title" + i);
+            movie.setStudio("studio" + i);
+            cardRowAdapter.add(movie);
+        }
+        /*Set Rows*/
         mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
+
 
         setAdapter(mRowsAdapter);
     }
