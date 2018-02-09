@@ -6,6 +6,10 @@ import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.HeaderItem;
 import android.support.v17.leanback.widget.ListRow;
 import android.support.v17.leanback.widget.ListRowPresenter;
+import android.support.v17.leanback.widget.OnItemViewSelectedListener;
+import android.support.v17.leanback.widget.Presenter;
+import android.support.v17.leanback.widget.Row;
+import android.support.v17.leanback.widget.RowPresenter;
 import android.util.Log;
 
 /**
@@ -24,6 +28,20 @@ public class MainFragment extends BrowseFragment {
 
         setupElements();
         loadRows();
+        setupEventListeners();
+    }
+
+    private void setupEventListeners() {
+        setOnItemViewSelectedListener(new ItemViewSelectedListener());
+    }
+
+    private final class ItemViewSelectedListener implements OnItemViewSelectedListener{
+
+        @Override
+        public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
+                                   RowPresenter.ViewHolder rowViewHolder, Row row) {
+            // each time the item is selected, code inside here will be executed.
+        }
     }
 
     private void setupElements(){
