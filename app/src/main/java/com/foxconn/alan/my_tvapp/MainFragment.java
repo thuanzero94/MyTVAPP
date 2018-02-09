@@ -6,6 +6,7 @@ import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.HeaderItem;
 import android.support.v17.leanback.widget.ListRow;
 import android.support.v17.leanback.widget.ListRowPresenter;
+import android.support.v17.leanback.widget.OnItemViewClickedListener;
 import android.support.v17.leanback.widget.OnItemViewSelectedListener;
 import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.Row;
@@ -36,10 +37,10 @@ public class MainFragment extends BrowseFragment {
 
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
+        setOnItemViewClickedListener(new ItemViewClickedListener());
     }
 
     private final class ItemViewSelectedListener implements OnItemViewSelectedListener{
-
         @Override
         public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
                                    RowPresenter.ViewHolder rowViewHolder, Row row) {
@@ -50,6 +51,14 @@ public class MainFragment extends BrowseFragment {
             } else if (item instanceof Movie) { // CardPresenter row
                 picassoBackgroundManager.updateBackgroundWithDelay(((Movie) item).getCardImageUrl());
             }
+        }
+    }
+    private final class ItemViewClickedListener implements OnItemViewClickedListener {
+        @Override
+        public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
+                                  RowPresenter.ViewHolder rowViewHolder, Row row) {
+            // each time the item is clicked, code inside here will be executed.
+
         }
     }
 
