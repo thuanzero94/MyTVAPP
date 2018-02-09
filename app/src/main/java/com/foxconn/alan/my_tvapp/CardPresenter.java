@@ -10,7 +10,6 @@ import android.support.v17.leanback.widget.Presenter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -38,7 +37,7 @@ public class CardPresenter extends Presenter{
             super(view);
             mCardView = (ImageCardView) view;
             mImageCardViewTarget = new PicassoImageCardViewTarget(mCardView);
-            mDefaultCardImage = mContext.getResources().getDrawable(R.drawable.movie_img);
+            mDefaultCardImage = mContext.getResources().getDrawable(R.drawable.android_img);
         }
 
         public Movie getmMovie() {
@@ -76,7 +75,7 @@ public class CardPresenter extends Presenter{
         /*CARD_REGION_VISIBLE_ALWAYS
          CARD_REGION_VISIBLE_ACTIVATED
          CARD_REGION_VISIBLE_SELECTED*/
-        cardView.setCardType(BaseCardView.CARD_REGION_VISIBLE_ACTIVATED);
+        //cardView.setCardType(BaseCardView.CARD_REGION_VISIBLE_ACTIVATED);
         cardView.setFocusable(true);
         cardView.setFocusableInTouchMode(true);
         cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_BG));

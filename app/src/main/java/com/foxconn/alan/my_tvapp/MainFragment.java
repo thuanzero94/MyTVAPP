@@ -20,12 +20,15 @@ public class MainFragment extends BrowseFragment {
     private static final String TAG = MainFragment.class.getSimpleName();
 
     private ArrayObjectAdapter mRowsAdapter;
+    private SimpleBackgroundManager simpleBackgroundManager = null;
+    private PicassoBackgroundManager picassoBackgroundManager = null;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         Log.i(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
-
+        simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
+        picassoBackgroundManager = new PicassoBackgroundManager(getActivity());
         setupElements();
         loadRows();
         setupEventListeners();
@@ -41,11 +44,17 @@ public class MainFragment extends BrowseFragment {
         public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
                                    RowPresenter.ViewHolder rowViewHolder, Row row) {
             // each time the item is selected, code inside here will be executed.
+            if (item instanceof String) { // GridItemPresenter row
+                //simpleBackgroundManager.clearBackground();
+                picassoBackgroundManager.updateBackgroundWithDelay("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/10/RIMG0656.jpg");
+            } else if (item instanceof Movie) { // CardPresenter row
+                picassoBackgroundManager.updateBackgroundWithDelay(((Movie) item).getCardImageUrl());
+            }
         }
     }
 
     private void setupElements(){
-        setBadgeDrawable(getResources().getDrawable(R.drawable.lb_action_bg));
+        //setBadgeDrawable(getResources().getDrawable(R.drawable.lb_action_bg));
         setTitle("Hello Android TV");
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
@@ -72,7 +81,13 @@ public class MainFragment extends BrowseFragment {
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
         for(int i=0; i<10; i++) {
             Movie movie = new Movie();
-            movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg");
+            if(i%3 == 0) {
+                movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg");
+            } else if (i%3 == 1) {
+                movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02630.jpg");
+            } else {
+                movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02529.jpg");
+            }
             movie.setTitle("title" + i);
             movie.setStudio("studio" + i);
             cardRowAdapter.add(movie);
