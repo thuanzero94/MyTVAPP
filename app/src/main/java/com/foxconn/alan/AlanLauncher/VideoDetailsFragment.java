@@ -1,5 +1,6 @@
 package com.foxconn.alan.AlanLauncher;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v17.leanback.widget.FullWidthDetailsOverviewRowPresenter;
 import android.support.v17.leanback.widget.HeaderItem;
 import android.support.v17.leanback.widget.ListRow;
 import android.support.v17.leanback.widget.ListRowPresenter;
+import android.support.v17.leanback.widget.OnActionClickedListener;
 import android.support.v17.leanback.widget.SparseArrayObjectAdapter;
 import android.util.Log;
 
@@ -37,6 +39,8 @@ public class VideoDetailsFragment extends DetailsFragment {
     private Movie mSelectedMovie;
     private DetailsRowBuilderTask mDetailsRowBuilderTask;
 
+    private int ACTION_PLAY_VIDEO = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         Log.i(TAG, "onCreate");
@@ -49,6 +53,12 @@ public class VideoDetailsFragment extends DetailsFragment {
 
         mDetailsRowBuilderTask = (DetailsRowBuilderTask) new DetailsRowBuilderTask().execute(mSelectedMovie);
         mPicassoBackgroundManager.updateBackgroundWithDelay(mSelectedMovie.getCardImageUrl());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+            mPicassoBackgroundManager.updateBackgroundWithDelay(mSelectedMovie.getCardImageUrl());
     }
 
     @Override
@@ -80,11 +90,25 @@ public class VideoDetailsFragment extends DetailsFragment {
         @Override
         protected void onPostExecute(DetailsOverviewRow row){
             /* 1st row: DetailsOverviewRow */
+           /* action setting*/
             SparseArrayObjectAdapter sparseArrayObjectAdapter = new SparseArrayObjectAdapter();
-            for (int i = 0; i<10; i++){
-                sparseArrayObjectAdapter.set(i, new Action(i, "label1", "label2"));
-            }
+            sparseArrayObjectAdapter.set(0, new Action(ACTION_PLAY_VIDEO, "Play Video"));
+            sparseArrayObjectAdapter.set(1, new Action(1, "Action 2", "label"));
+            sparseArrayObjectAdapter.set(2, new Action(2, "Action 3", "label"));
+
             row.setActionsAdapter(sparseArrayObjectAdapter);
+
+            mFwdorPresenter.setOnActionClickedListener(new OnActionClickedListener() {
+                @Override
+                public void onActionClicked(Action action) {
+                    if (action.getId() == ACTION_PLAY_VIDEO) {
+                        Intent intent = new Intent(getActivity(), PlaybackOverlayActivity.class);
+                        intent.putExtra("Movie", mSelectedMovie);
+                        intent.putExtra("shouldStart", true);
+                        startActivity(intent);
+                    }
+                }
+            });
 
             /* 2nd row: ListRow */
             ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new CardPresenter());

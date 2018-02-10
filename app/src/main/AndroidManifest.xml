@@ -36,7 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ErrorActivity" />
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".PlaybackOverlayActivity"></activity>
     </application>
 
 </manifest>

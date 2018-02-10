@@ -2,7 +2,6 @@ package com.foxconn.alan.AlanLauncher;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v17.leanback.app.BrowseFragment;
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.HeaderItem;
@@ -24,14 +23,17 @@ public class MainFragment extends BrowseFragment {
     private static final String TAG = MainFragment.class.getSimpleName();
 
     private ArrayObjectAdapter mRowsAdapter;
-    private SimpleBackgroundManager simpleBackgroundManager = null;
+    //private SimpleBackgroundManager simpleBackgroundManager = null;
     private PicassoBackgroundManager picassoBackgroundManager = null;
+
+    private String  selectedCardUrl;
+    private boolean clickedMovie = false;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         Log.i(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
-        simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
+        //simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
         picassoBackgroundManager = new PicassoBackgroundManager(getActivity());
         setupElements();
         loadRows();
@@ -43,17 +45,22 @@ public class MainFragment extends BrowseFragment {
         setOnItemViewClickedListener(new ItemViewClickedListener());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(clickedMovie)
+            picassoBackgroundManager.updateBackgroundWithDelay(selectedCardUrl);
+    }
+
     private final class ItemViewSelectedListener implements OnItemViewSelectedListener{
         @Override
         public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
                                    RowPresenter.ViewHolder rowViewHolder, Row row) {
             // each time the item is selected, code inside here will be executed.
             if (item instanceof String) { // GridItemPresenter row
-                //simpleBackgroundManager.clearBackground();
                 picassoBackgroundManager.updateBackgroundWithDelay("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/10/RIMG0656.jpg");
             } else if (item instanceof Movie) { // CardPresenter row
                 picassoBackgroundManager.updateBackgroundWithDelay(((Movie) item).getCardImageUrl());
-
             }
         }
     }
@@ -65,6 +72,10 @@ public class MainFragment extends BrowseFragment {
             if (item instanceof Movie) {
                 Movie movie = (Movie) item;
                 Log.d(TAG, "Item: " + item.toString());
+
+                selectedCardUrl = ((Movie) item).getCardImageUrl();
+                clickedMovie = true;
+
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
                 intent.putExtra(DetailsActivity.MOVIE, movie);
 
