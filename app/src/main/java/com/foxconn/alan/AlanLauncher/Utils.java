@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.foxconn.alan.my_tvapp;
+package com.foxconn.alan.AlanLauncher;
 
 import android.content.Context;
 import android.graphics.Point;

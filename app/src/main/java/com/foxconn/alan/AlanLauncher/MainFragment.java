@@ -1,4 +1,4 @@
-package com.foxconn.alan.my_tvapp;
+package com.foxconn.alan.AlanLauncher;
 
 import android.os.Bundle;
 import android.support.v17.leanback.app.BrowseFragment;
@@ -65,7 +65,7 @@ public class MainFragment extends BrowseFragment {
     private void setupElements(){
         //setBadgeDrawable(getResources().getDrawable(R.drawable.lb_action_bg));
         setTitle("Hello Android TV");
-        setHeadersState(HEADERS_ENABLED);
+        setHeadersState(HEADERS_HIDDEN);
         setHeadersTransitionOnBackEnabled(true);
 
         setBrandColor(getResources().getColor(R.color.fastlane_BG));

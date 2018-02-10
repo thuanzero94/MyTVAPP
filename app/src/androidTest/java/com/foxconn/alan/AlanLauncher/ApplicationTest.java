@@ -1,4 +1,4 @@
-package com.foxconn.alan.my_tvapp;
+package com.foxconn.alan.AlanLauncher;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
