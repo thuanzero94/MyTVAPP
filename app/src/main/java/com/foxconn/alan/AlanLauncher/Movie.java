@@ -1,5 +1,6 @@
 package com.foxconn.alan.AlanLauncher;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -8,7 +9,7 @@ import java.net.URISyntaxException;
  * Movie class represents video entity with title, description, image thumbs and video url.
  */
 
-public class Movie {
+public class Movie  implements Serializable{
         private static final String TAG = Movie.class.getSimpleName();
 
     static final long serialVersionUID = 727566175075960653L;
@@ -16,6 +17,7 @@ public class Movie {
     private String title;
     private String studio;
     private String cardImageUrl;
+    private String description;
 
     public Movie(){
     }
@@ -58,6 +60,14 @@ public class Movie {
         } catch (URISyntaxException e) {
             return null;
         }
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
