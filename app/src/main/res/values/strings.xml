@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AlanLauncher</string>
+    <string name="error_fragment_message">Error Fragment</string>
+    <string name="dismiss_error">dismiss error</string>
 </resources>

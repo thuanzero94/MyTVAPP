@@ -15,7 +15,6 @@ import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
 import android.util.Log;
 
-import java.io.Serializable;
 
 /**
  * Created by alan on 02/02/2018.
@@ -39,7 +38,6 @@ public class MainFragment extends BrowseFragment {
         setupEventListeners();
     }
 
-
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
         setOnItemViewClickedListener(new ItemViewClickedListener());
@@ -55,6 +53,7 @@ public class MainFragment extends BrowseFragment {
                 picassoBackgroundManager.updateBackgroundWithDelay("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/10/RIMG0656.jpg");
             } else if (item instanceof Movie) { // CardPresenter row
                 picassoBackgroundManager.updateBackgroundWithDelay(((Movie) item).getCardImageUrl());
+
             }
         }
     }
@@ -70,14 +69,20 @@ public class MainFragment extends BrowseFragment {
                 intent.putExtra(DetailsActivity.MOVIE, movie);
 
                 getActivity().startActivity(intent);
+            } else if (item instanceof String){
+                if(item == "ErrorFragment"){
+                    Intent intent = new Intent(getActivity(), ErrorActivity.class);
+                    startActivity(intent);
+                }
             }
+
         }
     }
 
     private void setupElements(){
         //setBadgeDrawable(getResources().getDrawable(R.drawable.lb_action_bg));
         setTitle("Hello Android TV");
-        setHeadersState(HEADERS_HIDDEN);
+        setHeadersState(HEADERS_DISABLED);
         setHeadersTransitionOnBackEnabled(true);
 
         setBrandColor(getResources().getColor(R.color.fastlane_BG));
@@ -98,6 +103,7 @@ public class MainFragment extends BrowseFragment {
         gridRowAdapter.add("ITEM 1");
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
+        gridRowAdapter.add("ErrorFragment");
         /*CardPresenter*/
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
         for(int i=0; i<10; i++) {
