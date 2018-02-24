@@ -1,10 +1,14 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.VideoView;
+
+import com.foxconn.alan.AlanLauncher.R;
+import com.foxconn.alan.AlanLauncher.common.Utils;
+import com.foxconn.alan.AlanLauncher.model.Movie;
 
 public class PlaybackOverlayActivity extends Activity {
     private static final String TAG = PlaybackOverlayFragment.class.getSimpleName();

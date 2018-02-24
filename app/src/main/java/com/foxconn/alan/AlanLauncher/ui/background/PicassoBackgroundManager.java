@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui.background;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import android.support.v17.leanback.app.BackgroundManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.foxconn.alan.AlanLauncher.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 

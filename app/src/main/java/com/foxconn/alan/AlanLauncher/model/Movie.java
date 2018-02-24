@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.model;
 
 import java.io.Serializable;
 import java.net.URI;

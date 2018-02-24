@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui.presenter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.foxconn.alan.AlanLauncher.R;
 
 /**
  * Created by alan on 08/02/2018.

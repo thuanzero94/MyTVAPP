@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,13 @@ import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
 import android.util.Log;
+
+import com.foxconn.alan.AlanLauncher.R;
+import com.foxconn.alan.AlanLauncher.data.MovieProvider;
+import com.foxconn.alan.AlanLauncher.model.Movie;
+import com.foxconn.alan.AlanLauncher.ui.background.PicassoBackgroundManager;
+import com.foxconn.alan.AlanLauncher.ui.presenter.CardPresenter;
+import com.foxconn.alan.AlanLauncher.ui.presenter.GridItemPresenter;
 
 import java.util.ArrayList;
 

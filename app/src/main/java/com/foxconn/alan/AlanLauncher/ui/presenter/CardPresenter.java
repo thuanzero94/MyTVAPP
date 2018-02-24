@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui.presenter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.foxconn.alan.AlanLauncher.R;
+import com.foxconn.alan.AlanLauncher.common.Utils;
+import com.foxconn.alan.AlanLauncher.model.Movie;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 

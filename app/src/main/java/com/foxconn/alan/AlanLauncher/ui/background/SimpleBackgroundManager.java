@@ -1,9 +1,11 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui.background;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.support.v17.leanback.app.BackgroundManager;
 import android.util.DisplayMetrics;
+
+import com.foxconn.alan.AlanLauncher.R;
 
 /**
  * Created by alan on 09/02/2018.

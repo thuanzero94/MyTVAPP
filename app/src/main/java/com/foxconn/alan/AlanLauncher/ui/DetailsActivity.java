@@ -1,7 +1,9 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.foxconn.alan.AlanLauncher.R;
 
 public class DetailsActivity extends Activity {
 

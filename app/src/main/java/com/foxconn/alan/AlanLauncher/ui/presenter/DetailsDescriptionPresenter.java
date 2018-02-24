@@ -12,9 +12,11 @@
  * the License.
  */
 
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui.presenter;
 
 import android.support.v17.leanback.widget.AbstractDetailsDescriptionPresenter;
+
+import com.foxconn.alan.AlanLauncher.model.Movie;
 
 public class DetailsDescriptionPresenter extends AbstractDetailsDescriptionPresenter {
 

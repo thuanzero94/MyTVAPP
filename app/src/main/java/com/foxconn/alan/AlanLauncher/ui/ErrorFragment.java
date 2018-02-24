@@ -1,8 +1,10 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.foxconn.alan.AlanLauncher.R;
 
 /**
  * Created by alan on 10/02/2018.

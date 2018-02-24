@@ -1,4 +1,6 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.data;
+
+import com.foxconn.alan.AlanLauncher.model.Movie;
 
 import java.util.ArrayList;
 

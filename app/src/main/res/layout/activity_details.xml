@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/details_fragment"
-    android:name="com.foxconn.alan.AlanLauncher.VideoDetailsFragment"
+    android:name="com.foxconn.alan.AlanLauncher.ui.VideoDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity"
+    tools:context=".ui.DetailsActivity"
     tools:deviceIds="tv"
     tools:ignore="MergeRootFrame" />

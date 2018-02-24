@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,7 +8,6 @@ import android.support.v17.leanback.app.DetailsFragment;
 import android.support.v17.leanback.widget.Action;
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.ClassPresenterSelector;
-import android.support.v17.leanback.widget.DetailsOverviewLogoPresenter;
 import android.support.v17.leanback.widget.DetailsOverviewRow;
 import android.support.v17.leanback.widget.FullWidthDetailsOverviewRowPresenter;
 import android.support.v17.leanback.widget.HeaderItem;
@@ -18,6 +17,12 @@ import android.support.v17.leanback.widget.OnActionClickedListener;
 import android.support.v17.leanback.widget.SparseArrayObjectAdapter;
 import android.util.Log;
 
+import com.foxconn.alan.AlanLauncher.common.Utils;
+import com.foxconn.alan.AlanLauncher.data.MovieProvider;
+import com.foxconn.alan.AlanLauncher.model.Movie;
+import com.foxconn.alan.AlanLauncher.ui.background.PicassoBackgroundManager;
+import com.foxconn.alan.AlanLauncher.ui.presenter.CardPresenter;
+import com.foxconn.alan.AlanLauncher.ui.presenter.DetailsDescriptionPresenter;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;

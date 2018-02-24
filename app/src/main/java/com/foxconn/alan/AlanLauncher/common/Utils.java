@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.common;
 
 import android.content.Context;
 import android.graphics.Point;

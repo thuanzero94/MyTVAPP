@@ -1,4 +1,4 @@
-package com.foxconn.alan.AlanLauncher;
+package com.foxconn.alan.AlanLauncher.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +21,11 @@ import android.support.v17.leanback.widget.PlaybackControlsRow;
 import android.support.v17.leanback.widget.PlaybackControlsRowPresenter;
 import android.util.Log;
 
+import com.foxconn.alan.AlanLauncher.common.Utils;
+import com.foxconn.alan.AlanLauncher.data.MovieProvider;
+import com.foxconn.alan.AlanLauncher.model.Movie;
+import com.foxconn.alan.AlanLauncher.ui.presenter.CardPresenter;
+import com.foxconn.alan.AlanLauncher.ui.presenter.DetailsDescriptionPresenter;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
