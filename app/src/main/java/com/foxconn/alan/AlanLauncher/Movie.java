@@ -18,6 +18,7 @@ public class Movie  implements Serializable{
     private String studio;
     private String cardImageUrl;
     private String description;
+    private String videoUrl;
 
     public Movie(){
     }
@@ -68,6 +69,14 @@ public class Movie  implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
     @Override

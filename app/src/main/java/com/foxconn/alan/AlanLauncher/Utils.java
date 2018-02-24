@@ -16,9 +16,13 @@ package com.foxconn.alan.AlanLauncher;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.media.MediaMetadataRetriever;
+import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 /**
  * A collection of utility methods, all static.
@@ -88,4 +92,15 @@ public class Utils {
         }
         return result;
     }
+
+    public static long getDuration(String videoUrl) {
+        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            mmr.setDataSource(videoUrl, new HashMap<String, String>());
+        } else {
+            mmr.setDataSource(videoUrl);
+        }
+        return Long.parseLong(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+    }
+
 }

@@ -21,6 +21,7 @@ import android.util.Log;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by alan on 10/02/2018.
@@ -112,7 +113,7 @@ public class VideoDetailsFragment extends DetailsFragment {
 
             /* 2nd row: ListRow */
             ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new CardPresenter());
-            for(int i = 0; i < 10; i++){
+           /* for(int i = 0; i < 10; i++){
                 Movie movie = new Movie();
                 if(i%3 == 0) {
                     movie.setCardImageUrl("http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg");
@@ -123,6 +124,10 @@ public class VideoDetailsFragment extends DetailsFragment {
                 }
                 movie.setTitle("title" + i);
                 movie.setStudio("studio" + i);
+                listRowAdapter.add(movie);
+            }*/
+            ArrayList<Movie> mItems = MovieProvider.getMovieItems();
+            for (Movie movie : mItems) {
                 listRowAdapter.add(movie);
             }
             HeaderItem headerItem = new HeaderItem(0, "Related Videos");

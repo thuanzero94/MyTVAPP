@@ -14,6 +14,8 @@ import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by alan on 02/02/2018.
@@ -117,6 +119,8 @@ public class MainFragment extends BrowseFragment {
         gridRowAdapter.add("ErrorFragment");
         /*CardPresenter*/
         ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
+
+        /*ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
         for(int i=0; i<10; i++) {
             Movie movie = new Movie();
             if(i%3 == 0) {
@@ -129,7 +133,13 @@ public class MainFragment extends BrowseFragment {
             movie.setTitle("title" + i);
             movie.setStudio("studio" + i);
             cardRowAdapter.add(movie);
+        }*/
+
+        ArrayList<Movie> mItems = MovieProvider.getMovieItems();
+        for (Movie movie : mItems) {
+            cardRowAdapter.add(movie);
         }
+
         /*Set Rows*/
         mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
         mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
